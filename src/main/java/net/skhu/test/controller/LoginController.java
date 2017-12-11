@@ -34,6 +34,16 @@ public class LoginController {
         return "login";
     }
 
+    //로그인 실패
+    @GetMapping(value = "login-error")
+    public String loginError(Model model, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<script>alert('로그인 실패!'); history.go(-1);</script>");
+        out.flush();
+        return "login";
+    }
+
     //회원 업로드 페이지
     @GetMapping(value = "upload")
     public String upload(Model model) {

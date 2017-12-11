@@ -49,7 +49,19 @@ public class ApplyService {
     //신청서 작성
     public int insert(Apply apply) {
         applyMapper.insert(apply);
-        System.out.println(apply.getA_id());
+        mentoringMapper.insert(apply.getA_id(), apply.getID());
         return apply.getA_id();
+    }
+
+    public Apply findOne(int a_id) {
+        return applyMapper.findByAid(a_id);
+    }
+
+    public void editOrDelete(String button, Apply apply) {
+        if(button.equals("edit")) {
+            applyMapper.updateContents(apply);
+        }else {
+            //applyMapper.delete(apply.getA_id());
+        }
     }
 }

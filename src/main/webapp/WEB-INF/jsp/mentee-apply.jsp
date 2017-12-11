@@ -4,10 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
-<c:import url="../common/head.jsp"/>
+<c:import url="../../res/common/head.jsp"/>
 <body>
 
-<c:import url="../common/menu.jsp"/>
+<c:import url="../../res/common/menu.jsp"/>
 
 <h1>멘토링 신청</h1>
 

@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
-<c:import url="../common/head.jsp"/>
+<c:import url="../../res/common/head.jsp"/>
 
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
@@ -16,7 +16,7 @@
 
 <body>
 
-<c:import url="../common/menu.jsp"/>
+<c:import url="../../res/common/menu.jsp"/>
 
 <h1>멘토 신청</h1>
 
@@ -96,20 +96,17 @@
         <label for="a_file">포트폴리오 제출</label>
         현재 파일 : <a href=${apply.a_fileUrl}>${apply.a_fileUrl}</a>
         <form:input path="a_file" id="a_file" type="file"/>
-        <p class="help-block">여기에 블록레벨 도움말 예제</p>
+        <form:hidden path="a_fileUrl" id="a_fileUrl"/>
+        <input type="hidden" name="a_fileUrl" value="${apply.a_fileUrl}">
+        <p class="help-block">주제에 대한 적절한 포트폴리오 파일 제출</p>
     </div>
     <div class="field">
         <center>
             <c:choose>
                 <c:when test="${apply.a_id > 0}">
-                    <form:hidden path="a_id"/>
-                    <div class="field">
-                        <button type="submit" class="btn btn-light">수정하기</button>
-                    </div>
-                    </br>
-                    <a href="apply-drop?a_id=${apply.a_id}">
-                        <button type="button" class="btn btn-light">삭제하기</button>
-                    </a>
+                    <%--<form:hidden path="a_id"/>--%>
+                    <button type="submit" name="button" class="btn btn-light" value="edit">수정</button>
+                    <%--<button type="submit" name="button" class="btn btn-light" value="delete">삭제</button>--%>
                 </c:when>
                 <c:otherwise>
                     <div class="field">

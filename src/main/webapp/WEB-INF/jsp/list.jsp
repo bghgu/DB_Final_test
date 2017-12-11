@@ -4,10 +4,10 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <html>
-<c:import url="../common/head.jsp"/>
+<c:import url="../../res/common/head.jsp"/>
 <body>
 
-<c:import url="../common/menu.jsp"/>
+<c:import url="../../res/common/menu.jsp"/>
 
 <h1>멘토링 목록</h1>
 

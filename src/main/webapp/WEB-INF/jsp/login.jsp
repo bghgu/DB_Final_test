@@ -4,7 +4,17 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <html>
-<c:import url="../common/head.jsp"/>
+<head>
+    <title>201232016</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../res/common.js"></script>
+</head>
+
 <body>
 <div>
     <h1>SM System</h1>
@@ -18,7 +28,7 @@
         <button type="submit" class="btn btn-default">Login</button>
     </form>
     <ul class="list-group">
-        <li class="list-group-item"><a href="upload">upload</a></li>
+        <li class="list-group-item"><a href="upload">회원 명단 업로드</a></li>
     </ul>
 </div>
 </body>

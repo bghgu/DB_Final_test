@@ -47,7 +47,7 @@ public class ApplyController {
         if (request.isRequestedSessionIdValid()) {
             //신청서 수정 페이지
             if (a_id != 0) {
-                //model.addAttribute("apply", applyMapper.findOne(a_id));
+                model.addAttribute("apply", applyService.findOne(a_id));
             } else {
                 model.addAttribute("apply", new Apply());
             }
@@ -57,20 +57,21 @@ public class ApplyController {
         return "redirect:login";
     }
 
+    //멘토 신청
     @PostMapping(value = "mentor-apply")
-    public String mentorApply2(Model model, HttpServletRequest request, Apply apply) throws IOException {
+    public String mentorApply2(Model model, HttpServletRequest request, Apply apply, String button, @RequestParam(value = "a_id", defaultValue = "0", required = false) int a_id) throws IOException {
         if (request.isRequestedSessionIdValid()) {
             String url = fileUploadService.upload(apply.getA_file());
-            apply.setA_fileUrl(url);
-            //신청서 수정
-            if(apply.getA_id() != 0) {
-                //applyMapper.updateContents(apply);
-                return "mentor-apply?a_id=";
-            }
+            apply.setA_fileUrl((url == null) ? request.getParameter("a_fileUrl") : url);
             //신청서 작성
-            else {
+            if(a_id == 0) {
                 apply.setID(AuthorizationService.getCurrentUser().getID());
                 return "redirect:room?a_id=" + applyService.insert(apply);
+            }
+            //신청서 수정
+            else {
+                applyService.editOrDelete(button, apply);
+                return "redirect:mentor-apply?a_id=" + a_id;
             }
         }
         return "redirect:login";
@@ -82,14 +83,17 @@ public class ApplyController {
         if (request.isRequestedSessionIdValid()) {
             int result = applyService.checkMento(AuthorizationService.getCurrentUser().getID(), a_id);
             if(result > 0) {
+                //멘토
                 if(result == 1) {
-                    System.out.println("멘토");
-                }else {
-                    System.out.println("멘티");
+                    model.addAttribute("auth", true);
                 }
+                //멘티
+                else {
+                    model.addAttribute("auth", false);
+                }
+                model.addAttribute("a_id", a_id);
                 return "room";
             }else {
-                System.out.println("멘토링 신청");
                 return "redirect:mentee-apply?a_id="+ a_id;
             }
         }
@@ -110,6 +114,7 @@ public class ApplyController {
         return "redirect:login";
     }
 
+    //멘토링 신청
     @PostMapping(value = "mentee-apply")
     public String menteeApply2(Model model, HttpServletRequest request, @RequestParam(value = "a_id", defaultValue = "0", required = false) int a_id) {
         if(request.isRequestedSessionIdValid()) {

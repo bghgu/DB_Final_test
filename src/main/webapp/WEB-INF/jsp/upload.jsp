@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <html>
-<c:import url="../common/head.jsp"/>
+<c:import url="../../res/common/head.jsp"/>
 <body>
 
 <header>

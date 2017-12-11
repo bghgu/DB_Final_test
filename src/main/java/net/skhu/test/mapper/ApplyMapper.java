@@ -13,7 +13,9 @@ import java.util.List;
 @Mapper
 public interface ApplyMapper {
     List<Apply> findAll();
+    Apply findByAid(int a_id);
     int findByIdAndAid(@Param("id") int id, @Param("a_id") int a_id);
     ArrayList<Apply> findById(int id);
     void insert(Apply apply);
+    void updateContents(Apply apply);
 }
