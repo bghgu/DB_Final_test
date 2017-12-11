@@ -41,13 +41,14 @@ ${mentolist.a_method}
     </div>
 </div>
 
-<input type="hidden" name="a_id" value="${mentolist.a_id}"/>
-<c:if test="${check}">
-    <center>
-        <button type="submit" name="button" class="button alt" value="신청하기">신청하기
-        </button>
-    </center>
-</c:if>
+<form method="post">
+    <input type="hidden" name="a_id" value="${mentolist.a_id}"/>
+    <c:if test="${check}">
+        <center>
+            <button type="submit" class="btn btn-light">신청하기</button>
+        </center>
+    </c:if>
+</form>
 
 </body>
 </html>

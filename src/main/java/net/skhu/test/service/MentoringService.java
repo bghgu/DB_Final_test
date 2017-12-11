@@ -29,7 +29,7 @@ public class MentoringService {
     }
 
     //멘토링 신청했는지 확인
-    public boolean check(int a_id, int id) {
+    public boolean check(int a_id, int id, int percent) {
         boolean result = true;
 
         //그 방의 주인이면 false
@@ -40,6 +40,16 @@ public class MentoringService {
         if(mentoringMapper.checkMentee(a_id, id).size() == 1 ) {
             result = false;
         }
+        if(percent == 100) {
+            result = false;
+        }
         return result;
+    }
+
+    //멘토링 신청
+    public int register(int a_id, int id) {
+        int m_id = mentoringMapper.checkM_id(a_id);
+        mentoringMapper.mentee(m_id, id);
+        return m_id;
     }
 }

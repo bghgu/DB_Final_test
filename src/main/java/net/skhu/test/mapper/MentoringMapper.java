@@ -16,4 +16,6 @@ public interface MentoringMapper {
     Mentoring showApply(int a_id);
     int showCount(int a_id);
     List<Mentee> checkMentee(@Param("a_id") int a_id, @Param("id") int id);
+    int checkM_id(int a_id);
+    void mentee(@Param("m_id") int m_id, @Param("ID") int ID);
 }

@@ -24,7 +24,7 @@
         <tr style="cursor:hand;" data-url="room?a_id=${list.a_id}">
             <td>${list.a_name}</td>
             <td>${list.u_name}</td>
-            <td>${list.a_aim}</td>
+            <td>${list.a_title}</td>
         </tr>
     </c:forEach>
     </tbody>

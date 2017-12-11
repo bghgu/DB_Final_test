@@ -45,4 +45,11 @@ public class ApplyService {
             }
         }
     }
+
+    //신청서 작성
+    public int insert(Apply apply) {
+        applyMapper.insert(apply);
+        System.out.println(apply.getA_id());
+        return apply.getA_id();
+    }
 }

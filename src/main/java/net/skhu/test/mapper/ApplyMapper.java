@@ -15,4 +15,5 @@ public interface ApplyMapper {
     List<Apply> findAll();
     int findByIdAndAid(@Param("id") int id, @Param("a_id") int a_id);
     ArrayList<Apply> findById(int id);
+    void insert(Apply apply);
 }
